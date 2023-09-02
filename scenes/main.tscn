@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://mhsgm8h1c27p"]
+[gd_scene load_steps=2 format=3 uid="uid://mhsgm8h1c27p"]
+
+[ext_resource type="PackedScene" uid="uid://b08kc7ikcw6ci" path="res://scenes/pacman.tscn" id="1_88utt"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Pacman" parent="." instance=ExtResource("1_88utt")]
+position = Vector2(540, 960)

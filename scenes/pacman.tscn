@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=9 format=3 uid="uid://b08kc7ikcw6ci"]
 
+[ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://ceqqg2htdyth" path="res://assets/images/pacman.png" id="1_oxsyu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kffpo"]
@@ -39,13 +40,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1jwkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyo6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbpe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwmww")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [node name="Pacman" type="Node2D"]
+script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ji60")
+frame_progress = 0.620495
