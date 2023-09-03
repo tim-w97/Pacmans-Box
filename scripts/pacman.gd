@@ -12,8 +12,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotation -= _speed * delta
+
+func _input(event):
+	if not event is InputEventScreenTouch:
+		return
 	
-	var user_tapped_screen = Input.is_action_pressed("screen_tap")
-	var user_released_screen = Input.is_action_just_released("screen_tap")
+	if event.is_pressed():
+		_animated_sprite.play()
+		return
 	
-	_animated_sprite.play()
+	_animated_sprite.stop()
+	_animated_sprite.set_frame_and_progress(2, 0)
