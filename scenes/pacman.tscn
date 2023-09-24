@@ -52,7 +52,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [node name="Pacman" type="Node2D"]
@@ -60,4 +60,4 @@ script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ji60")
-frame = 2
+frame_progress = 0.774248
