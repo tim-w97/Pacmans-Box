@@ -11,3 +11,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotation += _speed * delta
+
+
+func _on_area_2d_area_entered(area):
+	# TODO: stop game and show text
+	print("GAME_OVER!")

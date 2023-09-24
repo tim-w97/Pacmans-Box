@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=10 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://ceqqg2htdyth" path="res://assets/images/pacman.png" id="1_oxsyu"]
@@ -55,9 +55,17 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0r3k7"]
+radius = 55.1453
+
 [node name="Pacman" type="Node2D"]
 script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ji60")
-frame_progress = 0.31123
+frame_progress = 0.561093
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0r3k7")
