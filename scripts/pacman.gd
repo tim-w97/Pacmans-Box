@@ -94,5 +94,5 @@ func _input(event):
 	_shoot()
 
 # if pacman collides with the box, stop moving
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	_is_moving_away = false

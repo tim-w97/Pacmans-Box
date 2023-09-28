@@ -14,5 +14,5 @@ func _process(delta):
 		rotation += _speed * delta
 
 # if pacman collides with the box, stop rotating
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	is_rotating = false
