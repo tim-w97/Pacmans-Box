@@ -92,3 +92,7 @@ func _input(event):
 	_animated_sprite.set_frame_and_progress(2,0)
 	
 	_shoot()
+
+# if pacman collides with the box, stop moving
+func _on_area_2d_area_entered(area):
+	_is_moving_away = false
