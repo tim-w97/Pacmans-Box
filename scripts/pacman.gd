@@ -14,6 +14,10 @@ var _is_moving_away = false
 
 var _last_direction_angle
 
+var box_rotates_left = true
+
+signal throw_success
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -32,7 +36,10 @@ func _process(delta):
 		reset_position()
 	
 	if _is_orbiting:
-		rotation -= _rotation_speed_while_orbiting * delta
+		var direction = -1 if box_rotates_left else 1
+		
+		rotation += _rotation_speed_while_orbiting * delta * direction
+		
 		_do_orbit_movement()
 
 func reset_position():
@@ -49,6 +56,9 @@ func reset_position():
 		_animated_sprite.set_frame_and_progress(0,0)
 		_is_moving_away = false
 		position = center
+		
+		box_rotates_left = randi() % 2 == 0
+		throw_success.emit(box_rotates_left)
 
 func _do_orbit_movement():
 	var center = get_viewport_rect().size / 2
@@ -62,7 +72,9 @@ func _do_orbit_movement():
 	# float y = r*sin(t) + k;
 	
 	# adjust rotation so pacman follows the circle path
-	var adjusted_rotation = rotation - deg_to_rad(90)
+	var adjusted_rotation = rotation - deg_to_rad(
+		90 if box_rotates_left else -90
+	)
 	
 	position = Vector2(
 		_orbit_radius * cos(adjusted_rotation) + center.x,
@@ -96,3 +108,4 @@ func _input(event):
 # if pacman collides with the box, stop moving
 func _on_area_2d_area_entered(_area):
 	_is_moving_away = false
+	_animated_sprite.set_frame_and_progress(0,0)
