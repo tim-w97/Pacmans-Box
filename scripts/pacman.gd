@@ -5,6 +5,7 @@ var _rotation_speed_while_shoot = 7
 
 var _shoot_speed = 800
 var _orbit_radius = 150
+var _offscreen_offset = 50
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
@@ -28,43 +29,26 @@ func _process(delta):
 		position += direction_vector * delta * _shoot_speed
 		rotation += _rotation_speed_while_shoot * delta
 		
-		move_back_to_center()
+		reset_position()
 	
 	if _is_orbiting:
 		rotation -= _rotation_speed_while_orbiting * delta
 		_do_orbit_movement()
 
-func move_back_to_center():
+func reset_position():
 	var screen_size = get_viewport_rect().size
-	
-	# relocate pacman if he is off screen
-	
-	if position.x < 0:
-		position.x = screen_size.x
-		position.y = screen_size.y - position.y
-	
-	if position.x > screen_size.x:
-		position.x = 0
-		position.y = screen_size.y - position.y
-	
-	if position.y < 0:
-		position.y = screen_size.y
-		position.x = screen_size.x - position.x
-		
-	if position.y > screen_size.y:
-		position.y = 0
-		position.x = screen_size.x - position.x
-	
-	# if pacman is at center again, stop moving
-	
 	var center = screen_size / 2
-	var tolerance = Vector2(5,5)
 	
-	if position < center + tolerance && position > center - tolerance:
-		position = center
-		_is_moving_away = false
+	# if one of the following predicates is true, the pacman is offscreen
+	var p1 = position.x > screen_size.x + _offscreen_offset
+	var p2 = position.y > screen_size.y + _offscreen_offset
+	var p3 = position.x < - _offscreen_offset
+	var p4 = position.y < - _offscreen_offset
+	
+	if p1 or p2 or p3 or p4:
 		_animated_sprite.set_frame_and_progress(0,0)
-	
+		_is_moving_away = false
+		position = center
 
 func _do_orbit_movement():
 	var center = get_viewport_rect().size / 2
