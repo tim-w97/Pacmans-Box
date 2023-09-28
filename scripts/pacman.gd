@@ -17,6 +17,7 @@ var _last_direction_angle
 var box_rotates_left = true
 
 signal throw_success
+signal throw_fail
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -109,3 +110,4 @@ func _input(event):
 func _on_area_2d_area_entered(_area):
 	_is_moving_away = false
 	_animated_sprite.set_frame_and_progress(0,0)
+	throw_fail.emit()

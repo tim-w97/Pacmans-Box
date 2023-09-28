@@ -16,13 +16,13 @@ func _process(delta):
 	if is_rotating:
 		rotation += speed * delta * (1 if rotate_left else -1)
 
-# if pacman collides with the box, stop rotating
-func _on_area_2d_area_entered(_area):
-	is_rotating = false
-
-
 func _on_pacman_throw_success(new_rotation_direction):
+	# TODO: Remove later
 	is_rotating = true
 	
 	speed += speed_increase
 	rotate_left = new_rotation_direction
+
+
+func _on_pacman_throw_fail():
+	is_rotating = false

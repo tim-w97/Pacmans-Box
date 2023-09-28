@@ -11,4 +11,5 @@ position = Vector2(540, 960)
 [node name="Pacman" parent="." instance=ExtResource("1_88utt")]
 position = Vector2(540, 960)
 
+[connection signal="throw_fail" from="Pacman" to="Box" method="_on_pacman_throw_fail"]
 [connection signal="throw_success" from="Pacman" to="Box" method="_on_pacman_throw_success"]
