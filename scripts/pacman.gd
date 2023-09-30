@@ -17,7 +17,7 @@ var _last_direction_angle
 var box_rotates_left = true
 
 var zoom_out = false
-var zoom_out_speed = 1.5
+var zoom_out_speed = 0.8
 
 signal throw_success
 signal throw_fail
