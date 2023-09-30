@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://mhsgm8h1c27p"]
+[gd_scene load_steps=4 format=3 uid="uid://mhsgm8h1c27p"]
 
 [ext_resource type="PackedScene" uid="uid://b08kc7ikcw6ci" path="res://scenes/pacman.tscn" id="1_88utt"]
 [ext_resource type="PackedScene" uid="uid://driku6rmn20vp" path="res://scenes/box.tscn" id="2_3ukp0"]
+[ext_resource type="PackedScene" uid="uid://coctmqdivh0e4" path="res://scenes/hud.tscn" id="3_jbkrs"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Box" parent="." instance=ExtResource("2_3ukp0")]
+visible = false
 position = Vector2(540, 960)
 
 [node name="Pacman" parent="." instance=ExtResource("1_88utt")]
+visible = false
 position = Vector2(540, 960)
+
+[node name="HUD" parent="." instance=ExtResource("3_jbkrs")]
 
 [connection signal="throw_fail" from="Pacman" to="Box" method="_on_pacman_throw_fail"]
 [connection signal="throw_success" from="Pacman" to="Box" method="_on_pacman_throw_success"]
