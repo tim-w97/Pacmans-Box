@@ -26,7 +26,7 @@ text = "Play"
 
 [node name="GameName" type="Label" parent="CanvasLayer"]
 offset_right = 1080.0
-offset_bottom = 550.0
+offset_bottom = 568.0
 theme_override_fonts/font = ExtResource("1_skr31")
 theme_override_font_sizes/font_size = 100
 text = "Pacman's Box"

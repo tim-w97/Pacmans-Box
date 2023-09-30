@@ -111,3 +111,7 @@ func _on_area_2d_area_entered(_area):
 	_is_moving_away = false
 	_animated_sprite.set_frame_and_progress(0,0)
 	throw_fail.emit()
+
+
+func _on_hud_start_game():
+	show()
