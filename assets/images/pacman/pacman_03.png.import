@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceqqg2htdyth"
-path="res://.godot/imported/pacman.png-7d86491fd35891869ab8134c8e55ea74.ctex"
+uid="uid://3h2n5dr2hrvn"
+path="res://.godot/imported/pacman_03.png-40d3502b60383c308c7b27d291a839a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/pacman.png"
-dest_files=["res://.godot/imported/pacman.png-7d86491fd35891869ab8134c8e55ea74.ctex"]
+source_file="res://assets/images/pacman/pacman_03.png"
+dest_files=["res://.godot/imported/pacman_03.png-40d3502b60383c308c7b27d291a839a1.ctex"]
 
 [params]
 

@@ -16,6 +16,9 @@ var _last_direction_angle
 
 var box_rotates_left = true
 
+var zoom_out = false
+var zoom_out_speed = 1.5
+
 signal throw_success
 signal throw_fail
 
@@ -26,6 +29,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if zoom_out:
+		scale -= Vector2.ONE * delta * zoom_out_speed
+		
+		if scale < Vector2.ZERO:
+			zoom_out = false
+			hide()
+		
 	if _is_moving_away:
 		var direction_vector = Vector2.from_angle(
 			_last_direction_angle
@@ -88,13 +98,11 @@ func _shoot():
 	_is_moving_away = true
 
 func _input(event):
-	if _is_moving_away:
-		return
+	var p1 = _is_moving_away
+	var p2 = not event is InputEventScreenTouch
+	var p3 = not is_visible_in_tree()
 	
-	if not event is InputEventScreenTouch:
-		return
-	
-	if not is_visible_in_tree():
+	if p1 or p2 or p3:
 		return
 	
 	if event.is_pressed():
@@ -105,7 +113,7 @@ func _input(event):
 	_is_orbiting = false
 	
 	_animated_sprite.stop()
-	_animated_sprite.set_frame_and_progress(2,0)
+	_animated_sprite.set_frame_and_progress(6,0)
 	
 	_shoot()
 
@@ -113,6 +121,8 @@ func _input(event):
 func _on_area_2d_area_entered(_area):
 	_is_moving_away = false
 	_animated_sprite.set_frame_and_progress(0,0)
+	
+	zoom_out = true
 	throw_fail.emit()
 
 

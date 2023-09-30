@@ -1,58 +1,77 @@
-[gd_scene load_steps=10 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=14 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
-[ext_resource type="Texture2D" uid="uid://ceqqg2htdyth" path="res://assets/images/pacman.png" id="1_oxsyu"]
+[ext_resource type="Texture2D" uid="uid://b4nnfsyf5pn34" path="res://assets/images/pacman/pacman_00.png" id="2_02gyx"]
+[ext_resource type="Texture2D" uid="uid://bvgcuc8ocqpuc" path="res://assets/images/pacman/pacman_01.png" id="3_b0cy8"]
+[ext_resource type="Texture2D" uid="uid://bhnv0dwi15f8q" path="res://assets/images/pacman/pacman_02.png" id="4_7eprf"]
+[ext_resource type="Texture2D" uid="uid://3h2n5dr2hrvn" path="res://assets/images/pacman/pacman_03.png" id="5_sguqy"]
+[ext_resource type="Texture2D" uid="uid://e7ko1ef2j7pi" path="res://assets/images/pacman/pacman_04.png" id="6_wg4ps"]
+[ext_resource type="Texture2D" uid="uid://cm8t1fb8wkycf" path="res://assets/images/pacman/pacman_05.png" id="7_wjfms"]
+[ext_resource type="Texture2D" uid="uid://d28fp0bv7dpxj" path="res://assets/images/pacman/pacman_06.png" id="8_qfepb"]
+[ext_resource type="Texture2D" uid="uid://dxwrfssfrhmm6" path="res://assets/images/pacman/pacman_07.png" id="9_up6ve"]
+[ext_resource type="Texture2D" uid="uid://cmiaplllhx764" path="res://assets/images/pacman/pacman_08.png" id="10_kebqw"]
+[ext_resource type="Texture2D" uid="uid://btr8y3oh71xc3" path="res://assets/images/pacman/pacman_09.png" id="11_qu0ug"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kffpo"]
-atlas = ExtResource("1_oxsyu")
-region = Rect2(5, 5, 110, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwmww"]
-atlas = ExtResource("1_oxsyu")
-region = Rect2(120, 5, 110, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbpe0"]
-atlas = ExtResource("1_oxsyu")
-region = Rect2(235, 5, 110, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pyo6c"]
-atlas = ExtResource("1_oxsyu")
-region = Rect2(5, 120, 110, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jwkt"]
-atlas = ExtResource("1_oxsyu")
-region = Rect2(120, 120, 110, 110)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4ji60"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fll6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kffpo")
+"texture": ExtResource("2_02gyx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwmww")
+"texture": ExtResource("3_b0cy8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cbpe0")
+"texture": ExtResource("4_7eprf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pyo6c")
+"texture": ExtResource("5_sguqy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jwkt")
+"texture": ExtResource("6_wg4ps")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pyo6c")
+"texture": ExtResource("7_wjfms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cbpe0")
+"texture": ExtResource("8_qfepb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwmww")
+"texture": ExtResource("9_up6ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kebqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qu0ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kebqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_up6ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qfepb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wjfms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wg4ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sguqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7eprf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b0cy8")
 }],
 "loop": true,
 "name": &"default",
-"speed": 25.0
+"speed": 50.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r3k7"]
@@ -62,8 +81,7 @@ radius = 55.1453
 script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4ji60")
-frame_progress = 0.561093
+sprite_frames = SubResource("SpriteFrames_1fll6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
