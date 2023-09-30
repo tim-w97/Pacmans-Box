@@ -94,6 +94,9 @@ func _input(event):
 	if not event is InputEventScreenTouch:
 		return
 	
+	if not is_visible_in_tree():
+		return
+	
 	if event.is_pressed():
 		_animated_sprite.play()
 		_is_orbiting = true

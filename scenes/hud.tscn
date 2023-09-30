@@ -3,12 +3,10 @@
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_fg1fu"]
 [ext_resource type="FontFile" uid="uid://ukns65vd5itr" path="res://assets/fonts/alpha_echo.ttf" id="1_skr31"]
 
-[node name="HUD" type="Node2D"]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_fg1fu")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayButton" type="Button" parent="CanvasLayer"]
+[node name="PlayButton" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,7 +22,7 @@ theme_override_fonts/font = ExtResource("1_skr31")
 theme_override_font_sizes/font_size = 100
 text = "Play"
 
-[node name="GameName" type="Label" parent="CanvasLayer"]
+[node name="GameName" type="Label" parent="."]
 offset_right = 1080.0
 offset_bottom = 568.0
 theme_override_fonts/font = ExtResource("1_skr31")
@@ -33,4 +31,4 @@ text = "Pacman's Box"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

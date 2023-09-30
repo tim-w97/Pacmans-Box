@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 signal start_game
 
@@ -14,3 +14,4 @@ func _process(delta):
 
 func _on_play_button_pressed():
 	start_game.emit()
+	hide()
