@@ -88,7 +88,7 @@ func _do_orbit_movement():
 func _shoot():
 	_is_moving_away = true
 
-func _input(event):
+func _unhandled_input(event):
 	var p1 = _is_moving_away
 	var p2 = not event is InputEventScreenTouch
 	var p3 = not is_visible_in_tree()
