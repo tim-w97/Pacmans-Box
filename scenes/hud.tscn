@@ -19,14 +19,14 @@ offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_skr31")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 140
 text = "Play"
 
 [node name="TopLabel" type="Label" parent="."]
 offset_right = 1080.0
 offset_bottom = 311.0
 theme_override_fonts/font = ExtResource("1_skr31")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 140
 text = "Pacman's Box"
 horizontal_alignment = 1
 vertical_alignment = 1
