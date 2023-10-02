@@ -22,7 +22,7 @@ theme_override_fonts/font = ExtResource("1_skr31")
 theme_override_font_sizes/font_size = 100
 text = "Play"
 
-[node name="GameName" type="Label" parent="."]
+[node name="TopLabel" type="Label" parent="."]
 offset_right = 1080.0
 offset_bottom = 311.0
 theme_override_fonts/font = ExtResource("1_skr31")
