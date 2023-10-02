@@ -24,3 +24,7 @@ func _on_play_button_pressed():
 func _on_pacman_throw_success(new_rotation_direction):
 	score += 1
 	$TopLabel.text = str(score)
+
+
+func _on_pacman_throw_fail():
+	$TopLabel.text = "Game Over"
