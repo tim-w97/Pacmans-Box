@@ -7,8 +7,6 @@ var _shoot_speed = 800
 var _orbit_radius = 150
 var _offscreen_offset = 50
 
-@onready var _animated_sprite = $AnimatedSprite2D
-
 var _is_orbiting = false
 var _is_moving_away = false
 
@@ -57,7 +55,7 @@ func reset_position():
 	var p4 = position.y < - _offscreen_offset
 	
 	if p1 or p2 or p3 or p4:
-		_animated_sprite.set_frame_and_progress(0,0)
+		$AnimatedSprite2D.set_frame_and_progress(0,0)
 		_is_moving_away = false
 		position = center
 		
@@ -100,14 +98,14 @@ func _input(event):
 		return
 	
 	if event.is_pressed():
-		_animated_sprite.play()
+		$AnimatedSprite2D.play()
 		_is_orbiting = true
 		return
 	
 	_is_orbiting = false
 	
-	_animated_sprite.stop()
-	_animated_sprite.set_frame_and_progress(6,0)
+	$AnimatedSprite2D.stop()
+	$AnimatedSprite2D.set_frame_and_progress(6,0)
 	
 	_shoot()
 
@@ -117,8 +115,8 @@ func _on_area_2d_area_entered(_area):
 	
 	_is_moving_away = false
 	
-	_animated_sprite.hide()
-	_animated_sprite.set_frame_and_progress(0,0)
+	$AnimatedSprite2D.hide()
+	$AnimatedSprite2D.set_frame_and_progress(0,0)
 	
 	$PacmanDead.show()
 	
