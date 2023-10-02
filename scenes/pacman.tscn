@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=15 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://b4nnfsyf5pn34" path="res://assets/images/pacman/pacman_00.png" id="2_02gyx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dxwrfssfrhmm6" path="res://assets/images/pacman/pacman_07.png" id="9_up6ve"]
 [ext_resource type="Texture2D" uid="uid://cmiaplllhx764" path="res://assets/images/pacman/pacman_08.png" id="10_kebqw"]
 [ext_resource type="Texture2D" uid="uid://btr8y3oh71xc3" path="res://assets/images/pacman/pacman_09.png" id="11_qu0ug"]
+[ext_resource type="Texture2D" uid="uid://erov6bw62pav" path="res://assets/images/pacman/pacman_dead.png" id="12_kg2rk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fll6"]
 animations = [{
@@ -82,6 +83,10 @@ script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fll6")
+
+[node name="PacmanDead" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_kg2rk")
 
 [node name="Area2D" type="Area2D" parent="."]
 
