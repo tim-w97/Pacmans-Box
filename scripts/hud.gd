@@ -15,6 +15,9 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
+	score = 0
+	$BottomLabel.hide()
+	
 	start_game.emit()
 	$PlayButton.hide()
 
@@ -31,3 +34,5 @@ func _on_pacman_throw_fail():
 	
 	$BottomLabel.show()
 	$BottomLabel.text = "You got " + str(score) + " points"
+	
+	$PlayButton.show()

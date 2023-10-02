@@ -19,4 +19,5 @@ position = Vector2(540, 960)
 [connection signal="throw_fail" from="Pacman" to="HUD" method="_on_pacman_throw_fail"]
 [connection signal="throw_success" from="Pacman" to="Box" method="_on_pacman_throw_success"]
 [connection signal="throw_success" from="Pacman" to="HUD" method="_on_pacman_throw_success"]
+[connection signal="start_game" from="HUD" to="Box" method="_on_hud_start_game"]
 [connection signal="start_game" from="HUD" to="Pacman" method="_on_hud_start_game"]

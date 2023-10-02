@@ -26,3 +26,8 @@ func _on_pacman_throw_success(new_rotation_direction):
 
 func _on_pacman_throw_fail():
 	is_rotating = false
+
+
+func _on_hud_start_game():
+	speed = 0.5
+	is_rotating = true

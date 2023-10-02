@@ -16,8 +16,7 @@ var _last_direction_angle
 
 var box_rotates_left = true
 
-var zoom_out = false
-var zoom_out_speed = 0.8
+var game_over = false
 
 signal throw_success
 signal throw_fail
@@ -28,14 +27,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if zoom_out:
-		scale -= Vector2.ONE * delta * zoom_out_speed
-		
-		if scale < Vector2.ZERO:
-			zoom_out = false
-			hide()
-		
+func _process(delta):		
 	if _is_moving_away:
 		var direction_vector = Vector2.from_angle(
 			_last_direction_angle
@@ -55,6 +47,7 @@ func _process(delta):
 
 func reset_position():
 	var screen_size = get_viewport_rect().size
+	
 	var center = screen_size / 2
 	
 	# if one of the following predicates is true, the pacman is offscreen
@@ -101,8 +94,9 @@ func _input(event):
 	var p1 = _is_moving_away
 	var p2 = not event is InputEventScreenTouch
 	var p3 = not is_visible_in_tree()
+	var p4 = game_over
 	
-	if p1 or p2 or p3:
+	if p1 or p2 or p3 or p4:
 		return
 	
 	if event.is_pressed():
@@ -119,12 +113,20 @@ func _input(event):
 
 # if pacman collides with the box, stop moving
 func _on_area_2d_area_entered(_area):
+	game_over = true
+	
 	_is_moving_away = false
 	_animated_sprite.set_frame_and_progress(0,0)
 	
-	zoom_out = true
 	throw_fail.emit()
 
 
 func _on_hud_start_game():
+	_is_moving_away = false
+	
+	var center = get_viewport_rect().size / 2
+	position = center
+	
+	game_over = false
+	
 	show()
