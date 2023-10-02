@@ -28,3 +28,6 @@ func _on_pacman_throw_success(new_rotation_direction):
 
 func _on_pacman_throw_fail():
 	$TopLabel.text = "Game Over"
+	
+	$BottomLabel.show()
+	$BottomLabel.text = "You got " + str(score) + " points"

@@ -31,4 +31,15 @@ text = "Pacman's Box"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BottomLabel" type="Label" parent="."]
+visible = false
+offset_top = 1498.0
+offset_right = 1080.0
+offset_bottom = 1809.0
+theme_override_fonts/font = ExtResource("1_skr31")
+theme_override_font_sizes/font_size = 90
+text = "You got 12345 points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
