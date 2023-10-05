@@ -16,6 +16,9 @@ var box_rotates_left = true
 
 var game_over = false
 
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var pacman_dead = $PacmanDead
+
 signal throw_success
 signal throw_fail
 
@@ -55,7 +58,7 @@ func reset_position():
 	var p4 = position.y < - _offscreen_offset
 	
 	if p1 or p2 or p3 or p4:
-		$AnimatedSprite2D.set_frame_and_progress(0,0)
+		animated_sprite.set_frame_and_progress(0,0)
 		_is_moving_away = false
 		position = center
 		
@@ -98,14 +101,14 @@ func _unhandled_input(event):
 		return
 	
 	if event.is_pressed():
-		$AnimatedSprite2D.play()
+		animated_sprite.play()
 		_is_orbiting = true
 		return
 	
 	_is_orbiting = false
 	
-	$AnimatedSprite2D.stop()
-	$AnimatedSprite2D.set_frame_and_progress(6,0)
+	animated_sprite.stop()
+	animated_sprite.set_frame_and_progress(6,0)
 	
 	_shoot()
 
@@ -115,10 +118,10 @@ func _on_area_2d_area_entered(_area):
 	
 	_is_moving_away = false
 	
-	$AnimatedSprite2D.hide()
-	$AnimatedSprite2D.set_frame_and_progress(0,0)
+	animated_sprite.hide()
+	animated_sprite.set_frame_and_progress(0,0)
 	
-	$PacmanDead.show()
+	pacman_dead.show()
 	
 	throw_fail.emit()
 
@@ -131,7 +134,7 @@ func _on_hud_start_game():
 	
 	game_over = false
 	
-	$PacmanDead.hide()
-	$AnimatedSprite2D.show()
+	pacman_dead.hide()
+	animated_sprite.show()
 	
 	show()

@@ -62,3 +62,4 @@ theme_override_font_sizes/font_size = 140
 icon = ExtResource("3_qlxm5")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ShareButton" to="." method="_on_share_button_pressed"]
