@@ -42,12 +42,14 @@ func _on_pacman_throw_fail():
 	bottom_label.text = "You got " + str(score) + " points"
 	bottom_label.show()
 	
-	share_button.show()
+	# share_button.show()
 	
 	play_button.show()
 
 
 func _on_share_button_pressed():
+	return
+	
 	var message = "This isn't implemented yet YO."
 	
 	OS.shell_open("whatsapp://send?text=" + message.uri_encode())
