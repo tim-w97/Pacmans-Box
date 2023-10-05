@@ -19,6 +19,11 @@ var game_over = false
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var pacman_dead = $PacmanDead
 
+@onready var munch_sound = $MunchSound
+@onready var death_sound = $DeathSound
+
+var started_playing_munch = false
+
 signal throw_success
 signal throw_fail
 
@@ -40,6 +45,9 @@ func _process(delta):
 		reset_position()
 	
 	if _is_orbiting:
+		if not munch_sound.playing:
+			munch_sound.play()
+		
 		var direction = -1 if box_rotates_left else 1
 		
 		rotation += _rotation_speed_while_orbiting * delta * direction
@@ -114,6 +122,8 @@ func _unhandled_input(event):
 
 # if pacman collides with the box, stop moving
 func _on_area_2d_area_entered(_area):
+	death_sound.play()
+	
 	game_over = true
 	
 	_is_moving_away = false

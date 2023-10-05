@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=17 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://b4nnfsyf5pn34" path="res://assets/images/pacman/pacman_00.png" id="2_02gyx"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cmiaplllhx764" path="res://assets/images/pacman/pacman_08.png" id="10_kebqw"]
 [ext_resource type="Texture2D" uid="uid://btr8y3oh71xc3" path="res://assets/images/pacman/pacman_09.png" id="11_qu0ug"]
 [ext_resource type="Texture2D" uid="uid://erov6bw62pav" path="res://assets/images/pacman/pacman_dead.png" id="12_kg2rk"]
+[ext_resource type="AudioStream" uid="uid://dyts1w34vhfxj" path="res://assets/sounds/munch.mp3" id="13_4vf6i"]
+[ext_resource type="AudioStream" uid="uid://d3kcp0kam2d7t" path="res://assets/sounds/death.mp3" id="14_gicqh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fll6"]
 animations = [{
@@ -72,7 +74,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 50.0
+"speed": 65.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r3k7"]
@@ -83,6 +85,7 @@ script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fll6")
+frame_progress = 0.831153
 
 [node name="PacmanDead" type="Sprite2D" parent="."]
 visible = false
@@ -92,5 +95,11 @@ texture = ExtResource("12_kg2rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_0r3k7")
+
+[node name="MunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_4vf6i")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gicqh")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
