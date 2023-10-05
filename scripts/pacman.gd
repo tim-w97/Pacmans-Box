@@ -3,7 +3,7 @@ extends Node2D
 var _rotation_speed_while_orbiting = 2
 var _rotation_speed_while_shoot = 7
 
-var _shoot_speed = 800
+var _shoot_speed = 900
 var _orbit_radius = 150
 var _offscreen_offset = 50
 
