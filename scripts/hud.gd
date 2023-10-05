@@ -5,7 +5,6 @@ signal start_game
 var score = 0
 
 @onready var bottom_label = $BottomLabel
-@onready var share_button = $ShareButton
 @onready var play_button = $PlayButton
 @onready var top_label = $TopLabel
 
@@ -23,7 +22,6 @@ func _on_play_button_pressed():
 	score = 0
 	
 	bottom_label.hide()
-	share_button.hide()
 	play_button.hide()
 	
 	start_game.emit()
@@ -42,14 +40,4 @@ func _on_pacman_throw_fail():
 	bottom_label.text = "You got " + str(score) + " points"
 	bottom_label.show()
 	
-	# share_button.show()
-	
 	play_button.show()
-
-
-func _on_share_button_pressed():
-	return
-	
-	var message = "This isn't implemented yet YO."
-	
-	OS.shell_open("whatsapp://send?text=" + message.uri_encode())

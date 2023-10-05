@@ -86,7 +86,7 @@ script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fll6")
-frame_progress = 0.739202
+frame_progress = 0.134916
 
 [node name="PacmanDead" type="Sprite2D" parent="."]
 visible = false
