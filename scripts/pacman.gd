@@ -21,6 +21,7 @@ var game_over = false
 
 @onready var munch_sound = $MunchSound
 @onready var death_sound = $DeathSound
+@onready var respawn_sound = $RespawnSound
 
 var started_playing_munch = false
 
@@ -66,6 +67,8 @@ func reset_position():
 	var p4 = position.y < - _offscreen_offset
 	
 	if p1 or p2 or p3 or p4:
+		respawn_sound.play()
+		
 		animated_sprite.set_frame_and_progress(0,0)
 		_is_moving_away = false
 		position = center

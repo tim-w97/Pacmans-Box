@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=18 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://b4nnfsyf5pn34" path="res://assets/images/pacman/pacman_00.png" id="2_02gyx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://erov6bw62pav" path="res://assets/images/pacman/pacman_dead.png" id="12_kg2rk"]
 [ext_resource type="AudioStream" uid="uid://dyts1w34vhfxj" path="res://assets/sounds/munch.mp3" id="13_4vf6i"]
 [ext_resource type="AudioStream" uid="uid://d3kcp0kam2d7t" path="res://assets/sounds/death.mp3" id="14_gicqh"]
+[ext_resource type="AudioStream" uid="uid://b2o7l547lqiti" path="res://assets/sounds/respawn.mp3" id="15_rptxs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fll6"]
 animations = [{
@@ -85,7 +86,7 @@ script = ExtResource("1_52ipi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1fll6")
-frame_progress = 0.831153
+frame_progress = 0.242761
 
 [node name="PacmanDead" type="Sprite2D" parent="."]
 visible = false
@@ -101,5 +102,8 @@ stream = ExtResource("13_4vf6i")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_gicqh")
+
+[node name="RespawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_rptxs")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
