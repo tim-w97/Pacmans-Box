@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhsgm8h1c27p"]
+[gd_scene load_steps=5 format=3 uid="uid://mhsgm8h1c27p"]
 
 [ext_resource type="PackedScene" uid="uid://b08kc7ikcw6ci" path="res://scenes/pacman.tscn" id="1_88utt"]
 [ext_resource type="PackedScene" uid="uid://driku6rmn20vp" path="res://scenes/box.tscn" id="2_3ukp0"]
 [ext_resource type="PackedScene" uid="uid://coctmqdivh0e4" path="res://scenes/hud.tscn" id="3_jbkrs"]
+[ext_resource type="PackedScene" uid="uid://by2mlwiwtosv2" path="res://utils/save_manager.tscn" id="4_xoe13"]
 
 [node name="Main" type="Node2D"]
 
@@ -15,9 +16,12 @@ position = Vector2(540, 960)
 
 [node name="HUD" parent="." instance=ExtResource("3_jbkrs")]
 
+[node name="SaveManager" parent="." instance=ExtResource("4_xoe13")]
+
 [connection signal="throw_fail" from="Pacman" to="Box" method="_on_pacman_throw_fail"]
 [connection signal="throw_fail" from="Pacman" to="HUD" method="_on_pacman_throw_fail"]
 [connection signal="throw_success" from="Pacman" to="Box" method="_on_pacman_throw_success"]
 [connection signal="throw_success" from="Pacman" to="HUD" method="_on_pacman_throw_success"]
+[connection signal="save_score" from="HUD" to="SaveManager" method="_on_hud_save_score"]
 [connection signal="start_game" from="HUD" to="Box" method="_on_hud_start_game"]
 [connection signal="start_game" from="HUD" to="Pacman" method="_on_hud_start_game"]

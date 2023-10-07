@@ -1,10 +1,13 @@
 extends CanvasLayer
 
 signal start_game
+signal save_score
 
 var score = 0
 
-@onready var bottom_label = $BottomLabel
+@onready var score_label = $ScoreLabel
+@onready var highscore_label = $HighscoreLabel
+
 @onready var play_button = $PlayButton
 @onready var top_label = $TopLabel
 
@@ -21,7 +24,8 @@ func _process(delta):
 func _on_play_button_pressed():
 	score = 0
 	
-	bottom_label.hide()
+	score_label.hide()
+	highscore_label.hide()
 	play_button.hide()
 	
 	start_game.emit()
@@ -37,7 +41,10 @@ func _on_pacman_throw_success(new_rotation_direction):
 func _on_pacman_throw_fail():
 	top_label.text = "Game Over"
 	
-	bottom_label.text = "You got " + str(score) + " points"
-	bottom_label.show()
+	score_label.text = "You got " + str(score) + " points"
+	score_label.show()
 	
 	play_button.show()
+	highscore_label.show()
+	
+	save_score.emit(score)
