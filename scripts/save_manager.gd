@@ -1,14 +1,16 @@
 extends Node
 
-var file_path = "user://highscore.json"
+var file_path = "user://highscore.txt"
 
-func _on_hud_save_score(score):
+func save_highscore(score):
+	var file_exists = FileAccess.file_exists(file_path)
+	
 	var last_highscore = get_last_highscore()
 	
-	if last_highscore == -1:
+	if file_exists and last_highscore == -1:
 		return
 	
-	if score <= last_highscore:
+	if file_exists and score <= last_highscore:
 		return
 	
 	var file = FileAccess.open(file_path, FileAccess.WRITE)

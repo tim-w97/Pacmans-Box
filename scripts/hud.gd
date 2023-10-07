@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 signal start_game
-signal save_score
 
 var score = 0
 
@@ -11,12 +10,17 @@ var score = 0
 @onready var play_button = $PlayButton
 @onready var top_label = $TopLabel
 
-# Called when the node enters the scene tree for the first time.
+@onready var save_manager = get_parent().get_node("SaveManager")
+
 func _ready():
-	pass # Replace with function body.
+	var last_highscore = save_manager.get_last_highscore()
+	
+	if last_highscore == -1:
+		return
+	
+	highscore_label.text = "Your highscore is " + str(last_highscore)
+	highscore_label.show()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -45,6 +49,13 @@ func _on_pacman_throw_fail():
 	score_label.show()
 	
 	play_button.show()
-	highscore_label.show()
 	
-	save_score.emit(score)
+	save_manager.save_highscore(score)
+	
+	var last_highscore = save_manager.get_last_highscore()
+	
+	if last_highscore == -1:
+		return
+	
+	highscore_label.text = "Your highscore is " + str(last_highscore)
+	highscore_label.show()
