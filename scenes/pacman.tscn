@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b08kc7ikcw6ci"]
+[gd_scene load_steps=19 format=3 uid="uid://b08kc7ikcw6ci"]
 
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_52ipi"]
 [ext_resource type="Texture2D" uid="uid://b4nnfsyf5pn34" path="res://assets/images/pacman/pacman_00.png" id="2_02gyx"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dyts1w34vhfxj" path="res://assets/sounds/munch.mp3" id="13_4vf6i"]
 [ext_resource type="AudioStream" uid="uid://d3kcp0kam2d7t" path="res://assets/sounds/death.mp3" id="14_gicqh"]
 [ext_resource type="AudioStream" uid="uid://b2o7l547lqiti" path="res://assets/sounds/respawn.mp3" id="15_rptxs"]
+[ext_resource type="AudioStream" uid="uid://cwbvuubjow28f" path="res://assets/sounds/whoosh sounds.mp3" id="16_6i0te"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1fll6"]
 animations = [{
@@ -99,11 +100,15 @@ shape = SubResource("CircleShape2D_0r3k7")
 
 [node name="MunchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_4vf6i")
+volume_db = -10.0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_gicqh")
 
 [node name="RespawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rptxs")
+
+[node name="WhooshSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_6i0te")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

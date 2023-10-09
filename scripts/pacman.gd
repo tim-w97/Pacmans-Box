@@ -22,6 +22,7 @@ var game_over = false
 @onready var munch_sound = $MunchSound
 @onready var death_sound = $DeathSound
 @onready var respawn_sound = $RespawnSound
+@onready var whoosh_sound = $WhooshSound
 
 var started_playing_munch = false
 
@@ -30,13 +31,35 @@ signal throw_success
 signal throw_fail
 signal is_moving
 
+var max_whoosh_play_time = 0.480
+	
+var whoosh_play_positions = [
+	0.322,
+	1.361,
+	2.377,
+	3.508,
+	4.743,
+	5.844,
+	6.905,
+	8.060,
+	9.236,
+	10.312,
+	11.482,
+	12.533,
+	13.625
+]
+
+var current_whoosh_index
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):		
+func _process(delta):
+	maybe_stop_whoosh_sound()
+	
 	if _is_moving_away:
 		var direction_vector = Vector2.from_angle(
 			_last_direction_angle
@@ -56,6 +79,26 @@ func _process(delta):
 		rotation += _rotation_speed_while_orbiting * delta * direction
 		
 		_do_orbit_movement()
+
+func play_random_whoosh_sound():
+	current_whoosh_index = randi_range(
+		0, 
+		whoosh_play_positions.size() - 1
+	)
+	
+	whoosh_sound.play(whoosh_play_positions[current_whoosh_index])
+
+func maybe_stop_whoosh_sound():
+	if not whoosh_sound.playing:
+		return
+	
+	var current_time = whoosh_sound.get_playback_position()
+	var start_time = whoosh_play_positions[current_whoosh_index]
+	
+	var play_time = current_time - start_time
+	
+	if play_time > max_whoosh_play_time:
+		whoosh_sound.stop()
 
 func reset_position():
 	var screen_size = get_viewport_rect().size
@@ -120,6 +163,8 @@ func _unhandled_input(event):
 		
 		orbiting.emit()
 		return
+	
+	play_random_whoosh_sound()
 	
 	_is_orbiting = false
 	
