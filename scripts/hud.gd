@@ -4,8 +4,8 @@ signal start_game
 
 var score = 0
 
-@onready var score_label = $ScoreLabel
-@onready var highscore_label = $HighscoreLabel
+@onready var small_top_label = $SmallTopLabel
+@onready var small_bottom_label = $SmallBottomLabel
 
 @onready var play_button = $PlayButton
 @onready var top_label = $TopLabel
@@ -18,8 +18,8 @@ func _ready():
 	if last_highscore == -1:
 		return
 	
-	highscore_label.text = "Your highscore is " + str(last_highscore)
-	highscore_label.show()
+	small_bottom_label.text = "Your highscore is " + str(last_highscore)
+	small_bottom_label.show()
 
 func _process(delta):
 	pass
@@ -28,8 +28,8 @@ func _process(delta):
 func _on_play_button_pressed():
 	score = 0
 	
-	score_label.hide()
-	highscore_label.hide()
+	small_top_label.hide()
+	small_bottom_label.hide()
 	play_button.hide()
 	
 	start_game.emit()
@@ -45,8 +45,8 @@ func _on_pacman_throw_success(new_rotation_direction):
 func _on_pacman_throw_fail():
 	top_label.text = "Game Over"
 	
-	score_label.text = "Your score is " + str(score)
-	score_label.show()
+	small_top_label.text = "Your score is " + str(score)
+	small_top_label.show()
 	
 	play_button.show()
 	
@@ -57,5 +57,5 @@ func _on_pacman_throw_fail():
 	if last_highscore == -1:
 		return
 	
-	highscore_label.text = "Your highscore is " + str(last_highscore)
-	highscore_label.show()
+	small_bottom_label.text = "Your highscore is " + str(last_highscore)
+	small_bottom_label.show()
