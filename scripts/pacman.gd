@@ -25,8 +25,10 @@ var game_over = false
 
 var started_playing_munch = false
 
+signal orbiting
 signal throw_success
 signal throw_fail
+signal is_moving
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -100,6 +102,7 @@ func _do_orbit_movement():
 	_last_direction_angle = adjusted_rotation
 
 func _shoot():
+	is_moving.emit()
 	_is_moving_away = true
 
 func _unhandled_input(event):
@@ -114,6 +117,8 @@ func _unhandled_input(event):
 	if event.is_pressed():
 		animated_sprite.play()
 		_is_orbiting = true
+		
+		orbiting.emit()
 		return
 	
 	_is_orbiting = false

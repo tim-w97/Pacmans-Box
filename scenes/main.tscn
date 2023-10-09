@@ -18,6 +18,8 @@ position = Vector2(540, 960)
 
 [node name="SaveManager" parent="." instance=ExtResource("4_xoe13")]
 
+[connection signal="is_moving" from="Pacman" to="HUD" method="_on_pacman_is_moving"]
+[connection signal="orbiting" from="Pacman" to="HUD" method="_on_pacman_orbiting"]
 [connection signal="throw_fail" from="Pacman" to="Box" method="_on_pacman_throw_fail"]
 [connection signal="throw_fail" from="Pacman" to="HUD" method="_on_pacman_throw_fail"]
 [connection signal="throw_success" from="Pacman" to="Box" method="_on_pacman_throw_success"]
