@@ -41,6 +41,7 @@ func _on_play_button_pressed():
 	start_game.emit()
 	
 	small_bottom_label.text = "Tap and hold the screen"
+	small_bottom_label.show()
 
 
 func _on_pacman_throw_success(new_rotation_direction):
