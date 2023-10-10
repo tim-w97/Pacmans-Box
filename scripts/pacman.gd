@@ -115,6 +115,10 @@ func reset_position():
 	
 	if not (p1 or p2 or p3 or p4):
 		return
+		
+	rotation = deg_to_rad(
+		randi_range(0, 360)
+	)
 	
 	respawn_sound.play()
 		
