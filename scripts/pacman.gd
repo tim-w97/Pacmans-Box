@@ -26,6 +26,8 @@ var game_over = false
 
 var started_playing_munch = false
 
+var last_input_event
+
 signal orbiting
 signal throw_success
 signal throw_fail
@@ -111,15 +113,20 @@ func reset_position():
 	var p3 = position.x < - _offscreen_offset
 	var p4 = position.y < - _offscreen_offset
 	
-	if p1 or p2 or p3 or p4:
-		respawn_sound.play()
+	if not (p1 or p2 or p3 or p4):
+		return
+	
+	respawn_sound.play()
 		
-		animated_sprite.set_frame_and_progress(0,0)
-		_is_moving_away = false
-		position = center
-		
-		box_rotates_left = randi() % 2 == 0
-		throw_success.emit(box_rotates_left)
+	animated_sprite.set_frame_and_progress(0,0)
+	_is_moving_away = false
+	position = center
+	
+	box_rotates_left = randi() % 2 == 0
+	throw_success.emit(box_rotates_left)
+	
+	if last_input_event.is_pressed():
+		do_orbit_movement()
 
 func _do_orbit_movement():
 	var center = get_viewport_rect().size / 2
@@ -149,6 +156,8 @@ func _shoot():
 	_is_moving_away = true
 
 func _unhandled_input(event):
+	last_input_event = event
+	
 	var p1 = _is_moving_away
 	var p2 = not event is InputEventScreenTouch
 	var p3 = not is_visible_in_tree()
@@ -158,10 +167,7 @@ func _unhandled_input(event):
 		return
 	
 	if event.is_pressed():
-		animated_sprite.play()
-		_is_orbiting = true
-		
-		orbiting.emit()
+		do_orbit_movement()
 		return
 	
 	play_random_whoosh_sound()
@@ -172,6 +178,12 @@ func _unhandled_input(event):
 	animated_sprite.set_frame_and_progress(6,0)
 	
 	_shoot()
+
+func do_orbit_movement():
+	animated_sprite.play()
+	_is_orbiting = true
+		
+	orbiting.emit()
 
 # if pacman collides with the box, stop moving
 func _on_area_2d_area_entered(_area):
